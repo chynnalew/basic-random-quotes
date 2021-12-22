@@ -17,6 +17,7 @@ function loadQuote() {
     .then(data => {
       quote[index] = data.author + ': "' + data.content + '"';
     })
+  
 }
 
 function displayQuote() {
