@@ -2,7 +2,6 @@ let quote = [];
 const index = 0;
 let textPosition = 0;
 let flag = true;
-let destination = document.getElementById('text');
 
 function loadQuote() {
   const url = 'https://api.quotable.io/random';
@@ -16,7 +15,7 @@ function loadQuote() {
       }
     })
     .then(data => {
-      quote[index] = data.content;
+      quote[index] = data.author + ': "' + data.content + '"';
     })
 }
 
@@ -27,7 +26,7 @@ function displayQuote() {
     flag = false;
   }
 
-  destination.innerHTML = quote[index].substring(0, textPosition) + '<span>\u25AE</span>';
+  document.getElementById('text').innerHTML = quote[index].substring(0, textPosition) + '<span>\u25AE</span>';
 
   if (textPosition++ != quote[index].length) {
     setTimeout('displayQuote()', 100);
